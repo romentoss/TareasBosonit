@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="cuerpo">
+      <div class="luz" [ngStyle]="(selectColor === colors.red && showColors)?{'background-color': 'red','box-shadow':'0px 0px 30px red'}:{'background-color': 'grey'}"></div>
+  
+      <div class="luz" [ngStyle]="(selectColor === colors.yellow && showColors)?{'background-color': 'yellow','box-shadow':'0px 0px 30px yellow'}:{'background-color': 'grey'}"></div>
+     
+      <div class="luz" [ngStyle]="(selectColor === colors.green && showColors)?{'background-color': 'green' ,'box-shadow':'0px 0px 30px green'}:{'background-color': 'grey'}"></div>
+    </div>
+    <h1>Controlador</h1>
+    
+    <div class="contenedor">
+      <select name="colores" id="colors" [(ngModel)]="selectColor">
+        <option [value]="colors.red">Red</option>
+        <option [value]="colors.yellow">Yellow</option>
+        <option [value]="colors.green">Green</option>
+      </select>
+
+      <input type="checkbox"  [(ngModel)]="showColors"
+      [ngModelOptions]="{standalone: true}">Show colors
+    </div>
+</body>
+</html>

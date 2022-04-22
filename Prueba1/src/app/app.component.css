@@ -1,0 +1,17 @@
+#cuerpo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    background-color: rgb(27, 25, 25);
+    padding: 20px;
+    height: 130px;
+}
+
+.luz{
+    border-radius: 50%;
+
+    height: 30px;
+    width: 30px;
+}
