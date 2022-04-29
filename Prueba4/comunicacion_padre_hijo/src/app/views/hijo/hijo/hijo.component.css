@@ -1,0 +1,26 @@
+.contenedor_hijo{
+    border: 0px solid blue;
+    box-shadow: rgba(5, 97, 172, 0.3) 0px 0px 0px 3px;
+    width: 90%;
+    margin-left: 5%;
+
+  
+}
+.contenedor_msg{
+    display: flex;
+    justify-content: center;
+
+}
+.container_titulo{
+    justify-content: center;
+    display: flex;
+}
+.contenedor_btns{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+button{
+    border-radius:0px;
+    margin-right: 1%;
+}

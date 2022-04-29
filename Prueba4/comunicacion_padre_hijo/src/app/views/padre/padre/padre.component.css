@@ -1,0 +1,25 @@
+.contenedor_padre{
+    border: 0px solid blue;
+    box-shadow: rgba(5, 97, 172, 0.3) 0px 0px 0px 3px;
+    width: 100%;
+    padding-bottom: 2%;
+}
+.contenedor_msg{
+    display: flex;
+    justify-content: center;
+
+}
+.container_titulo{
+    justify-content: center;
+    display: flex;
+}
+.contenedor_btns{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+button{
+    border-radius:0px;
+    margin-right: 1%;
+}

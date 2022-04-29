@@ -1,0 +1,18 @@
+<div class="contenedor_padre">
+    Parent
+    <div class="contenedor_msg">
+        <div class="contenedor_interno">
+            <div class="container_titulo">
+                message:{{msgOutput}}
+            </div>
+            <br>
+            <div class="contenedor_btns">
+                <button mat-raised-button color="primary" (click)="dispararServiceParent()">Use Service</button>
+                <button mat-raised-button color="primary" (click)="dispararInput()">Use Input Property</button>
+                <button mat-raised-button color="primary" (click)="obsParent()">Use Observable</button>
+            </div>
+        </div>
+       
+    </div>
+    <app-hijo (msgOutput)="mostrarMsg($event)" [msgInput]="msgInput" ></app-hijo>
+</div>

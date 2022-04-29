@@ -1,0 +1,11 @@
+.contenedor_base{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+}
+.contenedor_formulario{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
