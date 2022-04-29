@@ -5,8 +5,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
   providedIn: 'root'
 })
 export class MsgServiceService {
-  // msgPadre: string = "PARENT USING SERVICE";
-  // msgHijo: string = "CHILD USING SERVICE";
+
   msgPadreSub: string = "PARENT USING SUBJECT";
   msgHijoSub: string = "CHILD USING SUBJECT";
   public  msgPadre: EventEmitter<any> = new EventEmitter();
