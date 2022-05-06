@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "pepeli",
+      "password": "hola",
+      "password2": "hola",
+      "email": "pepito@pepito.com",
+      "promo": true,
+      "country": "Angola",
+      "city": "tenerife"
+    },
+    {
+      "id": "wdWiH0E",
+      "name": "romentos",
+      "password": "romen",
+      "password2": "romen",
+      "email": "romen@romen.com",
+      "promo": true,
+      "country": "Åland Islands",
+      "city": "madrid"
+    }
+  ]
+}

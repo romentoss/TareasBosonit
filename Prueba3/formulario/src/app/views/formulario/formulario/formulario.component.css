@@ -1,11 +1,26 @@
 .contenedor_base{
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 100%;
     justify-content: space-between;
 }
 .contenedor_formulario{
     display: flex;
     flex-direction: column;
     width: 30%;
+}
+#paises{
+    width: 50%;
+}
+app-tabla{
+    margin-left: 10%;
+}
+.ID_STYLE{
+    display: none;
+}
+.form-control{
+    cursor: pointer;
+}
+form{
+    cursor: pointer;
 }

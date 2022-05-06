@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+    border: 1px solid black;
+    margin-right: 5%;
+  }
+
+ .container_btn{
+   display: flex;
+   flex-direction: row;
+ }
