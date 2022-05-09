@@ -20,7 +20,7 @@ export class FormularioComponent implements OnInit {
   
 
   constructor(private api:ApiService) { }
-
+  //cuando tenga promo es obligado el email  y sin true promo no es required
   ngOnInit(): void {
     this.countries$ = this.api.getAllCountries();
     this.form = new FormGroup({
@@ -32,7 +32,9 @@ export class FormularioComponent implements OnInit {
       promo: new FormControl(false),
       country: new FormControl(''),
       city: new FormControl('',Validators.required),
-    });
+    }
+    //validar buscar
+    );
     
   }
   
@@ -51,15 +53,14 @@ export class FormularioComponent implements OnInit {
           (data)=>{
             this.user = data;
             this.form.reset();
-            this.userList.push(this.user);
+            this.api.listUsers().subscribe(
+              (data)=>{
+                this.userList = data;
+              });
           });
-          location.reload();
         break;
     } 
-    this.api.listUsers().subscribe(
-      (data)=>{
-        this.userList = data;
-      }) 
+    
   }
   samePass(password:string, password2:string){
     if(password === password2){
