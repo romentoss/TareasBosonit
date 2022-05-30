@@ -56,28 +56,7 @@ export class FormularioComponent implements OnInit {
           return EMPTY;
         })
       ).subscribe();
-    // switch(this.form.value.id){
-    //   case '':
-    //     this.api.createUser(this.form.value).subscribe(
-    //       (data)=>{
-    //         this.user = data;
-    //         this.form.reset();
-    //         this.userList.push(this.user);
-    //       });
-    //     break;
-    //   default:
-    //     this.api.updateUser(this.form.value).subscribe(
-    //       (data)=>{
-    //         this.user = data;
-    //         this.form.reset();
-    //         this.api.listUsers().subscribe(
-    //           (data)=>{
-    //             this.userList = data;
-    //           });
-    //       });
-    //     break;
-    // } 
-    
+  
   }
   samePass(password:string, password2:string){
     if(password === password2){
@@ -91,11 +70,6 @@ export class FormularioComponent implements OnInit {
     this.form.patchValue(user);
  
   }
-  // updateUser(user:User){
-  //   return this.api.updateUser(user);
-  // }
-
-    // return this.form.patchValue(user):Observable<any>
 
   
 }

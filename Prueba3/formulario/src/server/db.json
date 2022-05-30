@@ -12,23 +12,13 @@
     },
     {
       "id": "wdWiH0E",
-      "name": "romentosto",
+      "name": "romentosd",
       "password": "romen",
       "password2": "romen",
       "email": "romen@romen.com",
       "promo": false,
       "country": "Åland Islands",
       "city": "madrid"
-    },
-    {
-      "id": "39zPnAz",
-      "name": "bfdbdfb",
-      "password": "qw123",
-      "password2": "qw123",
-      "email": "awdawd@dawdaw",
-      "promo": true,
-      "country": "Bahamas",
-      "city": "wdadwa"
     }
   ]
 }

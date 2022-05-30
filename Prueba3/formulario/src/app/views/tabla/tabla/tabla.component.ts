@@ -19,12 +19,8 @@ import { User } from 'src/app/interfaces/users';
 
 export class TablaComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  
   @Input() userList!:User[];
   @Output() updateUser = new EventEmitter<User>();
-
-  
-  
 
   constructor( private http:HttpClient,
             private aps:ApiService ) { }
