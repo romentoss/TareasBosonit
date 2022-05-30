@@ -1,28 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { FormularioComponent } from './../formulario/formulario/formulario.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, EMPTY, iif, Observable, switchMap, tap } from 'rxjs';
 import { Countries } from 'src/app/interfaces/countries';
 import { User } from 'src/app/interfaces/users';
+
+
+
+
+import {  EventEmitter, Input, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
-  selector: 'app-formulario',
-  templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  selector: 'app-padre',
+  templateUrl: './padre.component.html',
+  styleUrls: ['./padre.component.css']
 })
-export class FormularioComponent implements OnInit {
-  countries$!: Observable<Countries[]>
+export class PadreComponent implements OnInit {
+  countries$!: Observable<Countries[]>;
   form!:FormGroup;
   user!:User;
   userList!:User[];
-
+ 
+  @ViewChild(FormularioComponent) formFormulario;
+  
+ 
   
 
-  constructor(private api:ApiService) { }
-  //cuando tenga promo es obligado el email  y sin true promo no es required
-  ngOnInit(): void {
-    this.countries$ = this.api.getAllCountries();
+  constructor(private api:ApiService,private http:HttpClient) { 
     this.form = new FormGroup({
       id: new FormControl(''),
       name: new FormControl('',Validators.required),
@@ -35,10 +42,25 @@ export class FormularioComponent implements OnInit {
     }
     //validar buscar
     );
+  }
+   
+  //cuando tenga promo es obligado el email  y sin true promo no es required
+  ngOnInit(): void {
+    this.countries$ = this.api.getAllCountries();
+  
+    this.api.listUsers().subscribe((data) => {
+      this.userList = data;
+    })
     
+    
+  }
+  ngAfterViewInit() {
+    this.form = this.formFormulario.form;
+
   }
   
   onSubmit(){
+    console.log("submit");
     iif(
       () => this.form.value.id,
       this.api.updateUser(this.form.value),
@@ -79,13 +101,7 @@ export class FormularioComponent implements OnInit {
     // } 
     
   }
-  samePass(password:string, password2:string){
-    if(password === password2){
-      return true;
-    }else{
-      return false;      
-    }
-  }
+  
 
   updateUser(user:User){
     this.form.patchValue(user);
@@ -97,5 +113,36 @@ export class FormularioComponent implements OnInit {
 
     // return this.form.patchValue(user):Observable<any>
 
+    public async getData():Promise<Observable<any>>{
+      return this.http.get<any>("http://localhost:3000/users").toPromise();
+    }
   
+    async initPage(){
+      
+      let result =await this.getData();
+      console.log(result);
+      
+    };
+  
+    
+  
+    updateUserById(user:string){
+      console.log("update");
+      this.api.getUserId(user).subscribe((data)=>{
+        this.updateUser(data);
+        
+      });
+    }
+    deleteUserById(user:string){
+      
+      console.log("delete");
+      this.api.deleteUser(user).subscribe(()=>{
+        //Preguntar ya que es subscribe dentro de subscribe
+        this.api.listUsers().subscribe((data)=>{
+          this.userList = data;
+        });
+      });
+    }
+  
+
 }

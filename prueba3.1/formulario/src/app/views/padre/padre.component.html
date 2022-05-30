@@ -1,0 +1,8 @@
+<div class="contenedor__titulo">
+    <h1>Formulario de Registro</h1>
+</div>
+
+<div class="contenedor__padre">
+    <app-formulario [form]="form" [countries$]="countries$" (childEventEmitter)="onSubmit()" ></app-formulario>
+    <app-tabla [userList]="userList" (childEventEmitter)="updateUserById($event)" (childEventEmitter1)="deleteUserById($event)"></app-tabla>
+</div>

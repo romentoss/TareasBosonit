@@ -1,0 +1,9 @@
+.contenedor__padre{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.contenedor__titulo{
+    display: flex;
+    justify-content: center;
+}

@@ -1,16 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "pepeli",
-      "password": "hola",
-      "password2": "hola",
-      "email": "pepito@pepito.co",
-      "promo": true,
-      "country": "Angola",
-      "city": "tenerife"
-    },
-    {
       "id": "wdWiH0E",
       "name": "romentosto",
       "password": "romen",
@@ -29,6 +19,16 @@
       "promo": true,
       "country": "Bahamas",
       "city": "wdadwa"
+    },
+    {
+      "id": "svMqiHY",
+      "name": "pepe",
+      "password": "123",
+      "password2": "123",
+      "email": "pepe@pepe",
+      "promo": true,
+      "country": "Australia",
+      "city": "awdawd"
     }
   ]
 }
