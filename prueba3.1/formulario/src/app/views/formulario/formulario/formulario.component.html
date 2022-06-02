@@ -28,7 +28,7 @@
                 <div class="text-danger" *ngIf="form.get('password2')!.hasError('required') && form.get('password2')!.touched">
                     La contraseña de confirmación es obligatorio!!
                 </div>
-                <div class="text-danger" *ngIf="!samePass(form.get('password')?.value, form.get('password2')?.value)">
+                <div class="text-danger" *ngIf="form.errors">
                     Las contraseñas deben coincidir
                 </div>
                 <br>

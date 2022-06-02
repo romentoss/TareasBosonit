@@ -11,24 +11,14 @@
       "city": "madrid"
     },
     {
-      "id": "39zPnAz",
-      "name": "bfdbdfb",
-      "password": "qw123",
-      "password2": "qw123",
-      "email": "awdawd@dawdaw",
+      "id": "jQPYrfo",
+      "name": "pepe1",
+      "password": "123456a",
+      "password2": "123456a",
+      "email": "pepe@pepe",
       "promo": true,
-      "country": "Bahamas",
-      "city": "wdadwa"
-    },
-    {
-      "id": "uJKeO42",
-      "name": "awd",
-      "password": "123",
-      "password2": "123",
-      "email": "dawd@dawd",
-      "promo": true,
-      "country": "Bangladesh",
-      "city": "dwad"
+      "country": "Azerbaijan",
+      "city": "dwadwad"
     }
   ]
 }

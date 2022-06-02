@@ -6,6 +6,8 @@ import { Countries } from 'src/app/interfaces/countries';
 import { User } from 'src/app/interfaces/users';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
+import { samePass } from 'src/app/validators/passWord.directive';
 
 
 @Component({
@@ -30,8 +32,10 @@ export class PadreComponent implements OnInit {
       promo: new FormControl(false),
       country: new FormControl(''),
       city: new FormControl('',Validators.required),
-    }
-    //validar buscar
+    },
+     
+      [samePass] 
+    
     );
   }
    
@@ -45,7 +49,7 @@ export class PadreComponent implements OnInit {
   ngAfterViewInit() {
     this.form = this.formFormulario.form;
   }
-  
+
   onSubmit(){
     iif(
       () => this.form.value.id,

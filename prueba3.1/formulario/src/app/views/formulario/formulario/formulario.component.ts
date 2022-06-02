@@ -18,12 +18,6 @@ export class FormularioComponent {
   submit(value: string) {
     this.childEventEmitter.emit(value);
   }
-  samePass(password:string, password2:string){
-    if(password === password2){
-      return true;
-    }else{
-      return false;      
-    }
-  }
+ 
 
 }
