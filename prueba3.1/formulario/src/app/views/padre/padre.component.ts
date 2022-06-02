@@ -6,7 +6,6 @@ import { Countries } from 'src/app/interfaces/countries';
 import { User } from 'src/app/interfaces/users';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
-import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { samePass } from 'src/app/validators/passWord.directive';
 
 
@@ -33,9 +32,9 @@ export class PadreComponent implements OnInit {
       country: new FormControl(''),
       city: new FormControl('',Validators.required),
     },
-     
-      [samePass] 
-    
+     {
+      validators: samePass
+     }
     );
   }
    
