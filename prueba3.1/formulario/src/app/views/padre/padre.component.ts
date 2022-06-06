@@ -1,3 +1,4 @@
+import { ValidatorService } from './../../services/validator.service';
 import { FormularioComponent } from './../formulario/formulario/formulario.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -21,7 +22,7 @@ export class PadreComponent implements OnInit {
   userList!:User[];
   @ViewChild(FormularioComponent) formFormulario;
 
-  constructor(private api:ApiService,private http:HttpClient, private fb:FormBuilder) { 
+  constructor(private api:ApiService,private vs:ValidatorService,private http:HttpClient, private fb:FormBuilder) { 
     this.form = this.fb.group({
       id: new FormControl(''),
       name: new FormControl('',Validators.required),
@@ -33,7 +34,7 @@ export class PadreComponent implements OnInit {
       city: new FormControl('',Validators.required),
     },
      {
-      validators:[this.api.camposIguales('password','password2')]
+      validators:[this.vs.sameFields('password','password2')]
      }
     );
   }
@@ -88,7 +89,6 @@ export class PadreComponent implements OnInit {
     }
   deleteUserById(user:string){
       this.api.deleteUser(user).subscribe(()=>{
-        //Preguntar ya que es subscribe dentro de subscribe
         this.api.listUsers().subscribe((data)=>{
           this.userList = data;
         });
