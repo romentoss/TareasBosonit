@@ -20,6 +20,7 @@ export class TablaComponent{
   @Output() childEventEmitter1 = new EventEmitter<string>();
   
   updateUserById(user:User){
+    
     this.childEventEmitter.emit(user.id);
   }
   deleteUserById(user:User){

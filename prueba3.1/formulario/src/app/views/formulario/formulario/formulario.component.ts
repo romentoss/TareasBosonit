@@ -18,6 +18,8 @@ export class FormularioComponent {
   submit(value: string) {
     this.childEventEmitter.emit(value);
   }
- 
+  emailRequired() {
+    return this.form.get("email")?.errors?.["emailExists"] && this.form.get("email")?.touched;
+  }
 
 }

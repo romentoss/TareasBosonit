@@ -38,6 +38,9 @@
                 <div class="text-danger" *ngIf="form.get('email')!.hasError('required') && form.get('email')!.touched">
                     El correo es obligatorio!!
                 </div>
+                <div class="text-danger" *ngIf="emailRequired()">
+                    El correo es ya esta en uso!!
+                </div>
                 <br>
                 <div class="form-check">
                     <input type="checkbox" formControlName="promo" name="promo" class="form-check-input"/>

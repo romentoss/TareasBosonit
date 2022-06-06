@@ -1,3 +1,4 @@
+import { EmailvalidatorService } from './../../services/emailvalidator.service';
 import { ValidatorService } from './../../services/validator.service';
 import { FormularioComponent } from './../formulario/formulario/formulario.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -17,26 +18,30 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class PadreComponent implements OnInit {
   countries$!: Observable<Countries[]>;
-  form!:FormGroup;
+  
   user!:User;
   userList!:User[];
   @ViewChild(FormularioComponent) formFormulario;
-
-  constructor(private api:ApiService,private vs:ValidatorService,private http:HttpClient, private fb:FormBuilder) { 
-    this.form = this.fb.group({
-      id: new FormControl(''),
-      name: new FormControl('',Validators.required),
-      password: new FormControl('',Validators.required),
-      password2: new FormControl('',Validators.required),
-      email: new FormControl('',[Validators.required,Validators.email]),
-      promo: new FormControl(false),
-      country: new FormControl(''),
-      city: new FormControl('',Validators.required),
-    },
-     {
-      validators:[this.vs.sameFields('password','password2')]
-     }
-    );
+  form:FormGroup = this.fb.group({
+    id: [''],
+    name: ['',[Validators.required]],
+    password: ['',[Validators.required]],
+    password2: ['',[Validators.required]],
+    email: ['',[Validators.required,Validators.email],[this.emailValidator]],
+    promo: [false],
+    country: [''],
+    city: ['',[Validators.required]],
+  },
+   {
+    validators:[this.vs.sameFields('password','password2')]
+   }
+  );
+  constructor(private api:ApiService,
+    private vs:ValidatorService,
+    private http:HttpClient,
+    private fb:FormBuilder,
+    private emailValidator:EmailvalidatorService) { 
+    
   }
    
   //cuando tenga promo es obligado el email  y sin true promo no es required
@@ -70,7 +75,8 @@ export class PadreComponent implements OnInit {
       ).subscribe();
   }
   
-  updateUser(user:User){
+  updateUser(user:User){  
+    this.form.controls["email"].setValidators([Validators.required,Validators.email]);
     this.form.patchValue(user);
   }
  
@@ -86,12 +92,13 @@ export class PadreComponent implements OnInit {
       this.api.getUserId(user).subscribe((data)=>{
         this.updateUser(data);
       });
-    }
+  }
   deleteUserById(user:string){
       this.api.deleteUser(user).subscribe(()=>{
         this.api.listUsers().subscribe((data)=>{
           this.userList = data;
         });
       });
-    }
+  }
+
 }
