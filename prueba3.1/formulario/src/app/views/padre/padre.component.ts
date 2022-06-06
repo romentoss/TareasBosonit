@@ -1,12 +1,12 @@
 import { FormularioComponent } from './../formulario/formulario/formulario.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, EMPTY, iif, Observable, switchMap, tap } from 'rxjs';
 import { Countries } from 'src/app/interfaces/countries';
 import { User } from 'src/app/interfaces/users';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
-import { samePass } from 'src/app/validators/passWord.directive';
+
 
 
 @Component({
@@ -21,8 +21,8 @@ export class PadreComponent implements OnInit {
   userList!:User[];
   @ViewChild(FormularioComponent) formFormulario;
 
-  constructor(private api:ApiService,private http:HttpClient) { 
-    this.form = new FormGroup({
+  constructor(private api:ApiService,private http:HttpClient, private fb:FormBuilder) { 
+    this.form = this.fb.group({
       id: new FormControl(''),
       name: new FormControl('',Validators.required),
       password: new FormControl('',Validators.required),
@@ -33,7 +33,7 @@ export class PadreComponent implements OnInit {
       city: new FormControl('',Validators.required),
     },
      {
-      validators: samePass
+      validators:[this.api.camposIguales('password','password2')]
      }
     );
   }

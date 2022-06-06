@@ -1,4 +1,4 @@
-import { ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export const samePass: ValidatorFn = (control: any) => {
   const password = control.get('password');
@@ -10,3 +10,4 @@ export const samePass: ValidatorFn = (control: any) => {
     samePass: true,
   };
 };
+
