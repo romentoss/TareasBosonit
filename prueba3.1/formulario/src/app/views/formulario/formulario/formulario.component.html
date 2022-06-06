@@ -64,6 +64,7 @@
             </div>
             <br> 
             <button pButton  type="submit" [formGroup]="form" [disabled]="!form.valid"> {{ form.get('id')!.value ? "Editar" : "Crear"}} </button>
+            <button pButton type="button" (click)="form.reset()">Limpiar Formulario</button>
         </form> 
     </div>
 </div>

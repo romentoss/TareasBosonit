@@ -27,7 +27,7 @@ export class PadreComponent implements OnInit {
     name: ['',[Validators.required]],
     password: ['',[Validators.required]],
     password2: ['',[Validators.required]],
-    email: ['',[Validators.required,Validators.email],[this.emailValidator]],
+    email: ['',[Validators.required,Validators.email],[this.emailValidator.validateWithParams(null)]],
     promo: [false],
     country: [''],
     city: ['',[Validators.required]],
@@ -76,9 +76,16 @@ export class PadreComponent implements OnInit {
   }
   
   updateUser(user:User){  
-    this.form.controls["email"].setValidators([Validators.required,Validators.email]);
+    this.form.controls["email"].setValidators([this.emailValidator.validateWithParams(user.email)]);
     this.form.patchValue(user);
   }
+  // this.form.clearAsyncValidators();
+  //   this.form.clearValidators();
+  //   this.form.updateValueAndValidity();
+  //   let email = this.form.get('email');
+  //   email?.clearAsyncValidators();
+  //   email?.clearValidators();
+  //   email?.updateValueAndValidity();
  
   public async getData():Promise<Observable<any>>{
     return this.http.get<any>("http://localhost:3000/users").toPromise();
