@@ -19,6 +19,36 @@
       "promo": true,
       "country": "Azerbaijan",
       "city": "dwadwad"
+    },
+    {
+      "id": "oRZjQE2",
+      "name": "pepe1",
+      "password": "123456",
+      "password2": "123456",
+      "email": "pe@pepe.com",
+      "promo": true,
+      "country": "Bahamas",
+      "city": "dawdawd"
+    },
+    {
+      "id": "FTtbwm5",
+      "name": "romentos1",
+      "password": "123456",
+      "password2": "123456",
+      "email": "pepe2@pepe.com",
+      "promo": true,
+      "country": "Bangladesh",
+      "city": "dawdawd"
+    },
+    {
+      "id": "G-IeFsy",
+      "name": "pepito",
+      "password": "123456",
+      "password2": "123456",
+      "email": "pepe11@pepe.com",
+      "promo": true,
+      "country": "Azerbaijan",
+      "city": "dwad"
     }
   ]
 }

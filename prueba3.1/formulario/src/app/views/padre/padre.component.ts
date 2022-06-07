@@ -18,24 +18,12 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class PadreComponent implements OnInit {
   countries$!: Observable<Countries[]>;
-  
+  form!:FormGroup;
   user!:User;
   userList!:User[];
   @ViewChild(FormularioComponent) formFormulario;
-  form:FormGroup = this.fb.group({
-    id: [''],
-    name: ['',[Validators.required]],
-    password: ['',[Validators.required]],
-    password2: ['',[Validators.required]],
-    email: ['',[Validators.required,Validators.email],[this.emailValidator.validateWithParams(null)]],
-    promo: [false],
-    country: [''],
-    city: ['',[Validators.required]],
-  },
-   {
-    validators:[this.vs.sameFields('password','password2')]
-   }
-  );
+  // @ViewChild(FormularioComponent) form;
+  
   constructor(private api:ApiService,
     private vs:ValidatorService,
     private http:HttpClient,
@@ -76,7 +64,9 @@ export class PadreComponent implements OnInit {
   }
   
   updateUser(user:User){  
-    this.form.controls["email"].setValidators([this.emailValidator.validateWithParams(user.email)]);
+    const {email} = this.form.controls;
+    email.setAsyncValidators([this.emailValidator.validateWithParams(user.email)]);
+    
     this.form.patchValue(user);
   }
   // this.form.clearAsyncValidators();

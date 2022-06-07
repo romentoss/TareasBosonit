@@ -17,11 +17,11 @@ export class EmailvalidatorService {
       const email = control.value;
       console.log("email: ",email);
       
-      return email && email===originalEmail ? of(null) : this.http.get<any[]>(`http://localhost:3000/users?q=${email}`)
+      return email && email===originalEmail ? of(null) : this.http.get<any[]>(`http://localhost:3000/users?email=${email}`)
       .pipe(
         // delay(3000),
         map(resp =>{
-          return (resp.length === 0) ? null : {emailExists:true};
+          return !resp.length ? null : {emailExists:true};
         })
       )
     }
